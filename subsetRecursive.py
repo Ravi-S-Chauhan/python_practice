@@ -1,16 +1,27 @@
 import string
 
 
-def Solve(ip,op):
+def solve(ip, op, uniqueset):
     if len(ip) == 0:
-        print(op,end=" ")
+        uniqueset.append(op)
         return
     op1 = op
     op2 = op + ip[0]
     ip = ip[1:]
-    Solve(ip,op1)
-    Solve(ip,op2)
-    return
-ip = "abc"
+    solve(ip, op1, uniqueset)
+    solve(ip, op2, uniqueset)
+    return uniqueset
+
+
+ip = "aab"
 op = " "
-Solve(ip,op)
+global unique
+unique = list()
+unique = solve(ip, op, unique)
+uni = list()
+for i in unique:
+    if i in uni:
+        pass
+    else:
+        uni.append(i)
+print(uni)
